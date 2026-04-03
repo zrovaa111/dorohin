@@ -1,0 +1,1613 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060606">
+<title>DOROHIN — Монтажное агентство</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060606;--bg2:#0d0d0d;--bg3:#141414;--bg4:#1a1a1a;
+  --red:#c0392b;--red2:#e74c3c;--red3:rgba(192,57,43,0.1);
+  --white:#f0ece8;--muted:#52504e;--dim:#242220;
+  --border:rgba(192,57,43,0.16);
+  --fd:'Bebas Neue','Arial Narrow',Arial,sans-serif;
+  --fb:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;color-scheme:dark;}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);font-size:15px;line-height:1.7;overflow-x:hidden;-webkit-text-size-adjust:100%;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:.5;mix-blend-mode:overlay;}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:var(–bg);}
+.hero-bg::before{content:’’;position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(176,16,16,.2) 0%,transparent 65%);top:-350px;right:-250px;animation:breathe 7s ease-in-out infinite;}
+.hero-bg::after{content:’’;position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(176,16,16,.08) 0%,transparent 70%);bottom:-150px;left:-150px;animation:breathe 9s ease-in-out infinite reverse;}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.6;}50%{transform:scale(1.2);opacity:1;}}
+.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(176,16,16,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(176,16,16,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 65% 25%,black 15%,transparent 65%);}
+.hero-scan{position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 3px);pointer-events:none;}
+.hero-wm{position:absolute;bottom:-60px;left:-20px;z-index:2;font-family:var(–fd);font-size:clamp(180px,28vw,340px);line-height:1;color:rgba(176,16,16,.05);user-select:none;pointer-events:none;white-space:nowrap;}
+
+.hero-inner{position:relative;z-index:3;flex:1;max-width:1040px;margin:0 auto;width:100%;padding:60px 40px 48px;display:grid;grid-template-columns:1fr 260px;gap:48px;align-items:center;}
+
+.hero-live{display:inline-flex;align-items:center;gap:8px;background:rgba(176,16,16,.1);border:1px solid rgba(176,16,16,.28);border-radius:100px;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–red2);margin-bottom:24px;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(–red2);box-shadow:0 0 8px var(–red2);animation:blink 1.5s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.25;}}
+
+.hero-logo{font-family:var(–fd);font-size:clamp(68px,11vw,124px);line-height:.88;letter-spacing:4px;margin-bottom:8px;}
+.logo-z{color:var(–white);}
+.logo-r{color:var(–red2);text-shadow:0 0 80px rgba(224,21,21,.55),0 0 180px rgba(224,21,21,.18);}
+
+.hero-tag{font-size:clamp(12px,1.6vw,16px);font-weight:300;color:var(–muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;}
+.hero-tag em{color:var(–white);font-style:normal;font-weight:600;}
+
+.sw-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.sw{display:inline-flex;align-items:center;gap:7px;border:1px solid var(–dim);border-radius:8px;padding:6px 13px;font-size:11px;font-weight:700;transition:border-color .2s,background .2s;cursor:default;}
+.sw.ae{border-color:rgba(153,102,255,.22);color:#b380ff;background:rgba(153,102,255,.05);}
+.sw.pr{border-color:rgba(180,120,220,.22);color:#c090e0;background:rgba(180,120,220,.05);}
+.sw.ps{border-color:rgba(60,130,240,.22);color:#7aabf0;background:rgba(60,130,240,.05);}
+
+.hero-name{font-size:12px;font-weight:600;color:var(–muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+
+.hero-offer{margin-bottom:24px;}
+.hero-offer-main{
+font-family:var(–fd);
+font-size:clamp(28px,5vw,48px);
+line-height:1.05;
+color:var(–white);
+margin-bottom:10px;
+letter-spacing:.5px;
+}
+.hero-offer-main em{color:var(–red2);font-style:normal;text-shadow:0 0 40px rgba(231,76,60,.3);}
+.hero-offer-sub{
+font-size:14px;font-weight:500;
+color:var(–muted);line-height:1.6;
+max-width:440px;
+}
+
+.hero-socials{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;align-items:center;}
+.hs-label{
+font-size:10px;font-weight:700;
+letter-spacing:2px;text-transform:uppercase;
+color:var(–red2);
+margin-right:4px;
+white-space:nowrap;
+}
+.hs{
+display:inline-flex;align-items:center;gap:7px;
+background:var(–bg2);
+border:1px solid var(–red);
+border-radius:100px;
+padding:9px 18px;
+font-size:12px;font-weight:800;
+letter-spacing:.5px;
+color:var(–white);text-decoration:none;
+transition:border-color .2s,background .2s,transform .15s,box-shadow .2s;
+box-shadow:0 2px 12px rgba(192,57,43,.25);
+}
+.hs:hover{
+border-color:var(–red2);
+background:rgba(192,57,43,.12);
+transform:translateY(-2px);
+box-shadow:0 4px 20px rgba(192,57,43,.4);
+}
+.hs-icon{font-size:15px;}
+
+.hero-tg{display:inline-flex;align-items:center;gap:10px;background:var(–red);color:#fff;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:14px 30px;border-radius:10px;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 28px rgba(176,16,16,.35);}
+.hero-tg:hover{background:var(–red2);transform:translateY(-2px);box-shadow:0 8px 40px rgba(224,21,21,.45);}
+
+.hero-photo-wrap{display:flex;flex-direction:column;align-items:flex-end;}
+.photo-box{width:230px;height:300px;border-radius:14px 14px 0 0;overflow:hidden;border:1px solid var(–border);border-bottom:none;background:var(–bg3);position:relative;}
+
+/* LOGO ANIMATION BOX */
+.logo-box{
+display:flex;align-items:center;justify-content:center;
+background:linear-gradient(145deg,#0a0a0a,#120608,#0a0a0a);
+}
+.logo-anim{
+position:relative;z-index:2;
+display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.logo-glow{
+position:absolute;
+width:200px;height:200px;border-radius:50%;
+background:radial-gradient(circle,rgba(192,57,43,.22) 0%,transparent 70%);
+animation:pulseGlow 2.5s ease-in-out infinite;
+top:50%;left:50%;transform:translate(-50%,-50%);
+pointer-events:none;
+}
+@keyframes pulseGlow{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.2);}}
+.logo-text{font-family:var(–fd);font-size:48px;letter-spacing:4px;line-height:1;position:relative;}
+.logo-d{color:var(–red2);animation:glowD 2.5s ease-in-out infinite;}
+@keyframes glowD{0%,100%{text-shadow:0 0 20px rgba(231,76,60,.5),0 0 40px rgba(231,76,60,.2);}50%{text-shadow:0 0 40px rgba(231,76,60,1),0 0 80px rgba(231,76,60,.5);}}
+.logo-rest{color:var(–white);}
+.logo-tag-line{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(–muted);margin-top:2px;}
+.logo-pulse{width:6px;height:6px;border-radius:50%;background:var(–red2);margin-top:6px;animation:pulseDot 1.5s ease-in-out infinite;box-shadow:0 0 10px rgba(231,76,60,.8);}
+@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(2);opacity:.4;}}
+.photo-box img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:contrast(1.06) saturate(.88);display:block;}
+.photo-box::after{content:’’;position:absolute;bottom:0;left:0;right:0;height:110px;background:linear-gradient(to top,rgba(6,6,6,.95),transparent);}
+.photo-box::before{content:’’;position:absolute;top:0;right:0;z-index:1;width:0;height:0;border-style:solid;border-width:0 50px 50px 0;border-color:transparent var(–red) transparent transparent;opacity:.5;}
+.photo-stats{width:230px;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(–border);border-radius:0 0 14px 14px;overflow:hidden;}
+.pstat{padding:14px;background:var(–bg3);text-align:center;border-right:1px solid var(–border);}
+.pstat:last-child{border-right:none;}
+.pstat-val{font-family:var(–fd);font-size:22px;color:var(–red2);line-height:1;margin-bottom:3px;}
+.pstat-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);}
+
+/* STATS BAR */
+.stats-bar{position:relative;z-index:3;max-width:1040px;margin:0 auto;padding:0 40px;}
+.stats-row{
+display:grid;grid-template-columns:repeat(6,1fr);
+border:1px solid var(–border);
+border-radius:0 0 16px 16px;
+background:var(–bg2);overflow:hidden;
+}
+.si{padding:14px 8px;text-align:center;border-right:1px solid var(–dim);position:relative;transition:background .2s;}
+.si:last-child{border-right:none;}
+.si:hover{background:rgba(192,57,43,.05);}
+.si::after{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:var(–red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.si:hover::after{transform:scaleX(1);}
+.si-val{font-family:var(–fd);font-size:24px;color:var(–red2);line-height:1;margin-bottom:4px;}
+.si-label{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(–muted);line-height:1.3;}
+@media(max-width:760px){.stats-row{grid-template-columns:repeat(3,1fr);}}
+
+/* TAB NAV */
+.tab-nav{
+position:sticky;top:0;z-index:100;
+background:rgba(6,6,6,.98);
+backdrop-filter:blur(20px);
+border-bottom:1px solid var(–border);
+padding:8px 12px 10px;
+}
+.tab-nav-hint{
+text-align:center;
+font-family:var(–fd);
+font-size:16px;
+letter-spacing:1px;text-transform:uppercase;
+color:var(–white);
+margin-bottom:8px;
+display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.tab-nav-hint::before,.tab-nav-hint::after{
+content:’’;flex:1;height:1px;
+background:var(–dim);
+}
+.tab-nav-inner{
+max-width:1040px;margin:0 auto;
+display:flex;
+gap:6px;
+overflow-x:auto;
+scrollbar-width:none;
+-webkit-overflow-scrolling:touch;
+}
+.tab-nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{
+font-family:var(–fb);
+background:var(–bg3);
+border:1px solid rgba(255,255,255,.07);
+border-radius:12px;
+cursor:pointer;
+transition:border-color .2s,background .2s,transform .15s,box-shadow .2s;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:4px;padding:10px 10px 8px;
+position:relative;overflow:hidden;
+min-width:68px;flex-shrink:0;
+}
+.tab-btn::after{
+content:’’;
+position:absolute;bottom:0;left:0;right:0;
+height:2px;background:var(–red2);
+transform:scaleX(0);transform-origin:center;
+transition:transform .2s ease;
+}
+.tab-btn:hover{
+border-color:rgba(192,57,43,.35);
+background:rgba(192,57,43,.07);
+transform:translateY(-2px);
+}
+.tab-btn:hover::after{transform:scaleX(.6);}
+.tab-btn.active{
+border-color:var(–red);
+background:linear-gradient(170deg,rgba(192,57,43,.15),rgba(192,57,43,.05));
+box-shadow:0 4px 20px rgba(192,57,43,.22);
+}
+.tab-btn.active::after{transform:scaleX(1);}
+.tab-icon{font-size:20px;line-height:1;flex-shrink:0;}
+.tab-label{
+font-size:9px;font-weight:700;
+letter-spacing:.3px;text-transform:uppercase;
+color:var(–muted);
+transition:color .2s;
+text-align:center;
+white-space:nowrap;
+line-height:1.2;
+}
+.tab-btn:hover .tab-label{color:var(–white);}
+.tab-btn.active .tab-label{color:var(–red2);}
+white-space:nowrap;
+line-height:1.2;
+}
+.tab-btn:hover .tab-label{color:var(–white);}
+.tab-btn.active .tab-label{color:var(–red2);}
+
+@media(max-width:480px){
+.tab-nav{padding:10px 12px;}
+.tab-nav-inner{gap:6px;}
+.tab-btn{padding:14px 6px 12px;min-height:70px;border-radius:12px;}
+.tab-icon{font-size:20px;}
+.tab-label{font-size:10px;letter-spacing:0;}
+}
+
+/* SECTIONS */
+.section{display:none;}
+.section.active{display:block;}
+.wrap{max-width:1040px;margin:0 auto;padding:56px 40px 100px;}
+
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:center;gap:0;margin-bottom:8px;}
+.sec-num{font-family:var(–fd);font-size:110px;color:rgba(176,16,16,.07);line-height:1;user-select:none;margin-right:-14px;flex-shrink:0;}
+.sec-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(–red2);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.sec-eyebrow::before{content:’’;width:18px;height:1px;background:var(–red2);}
+.sec-title{font-family:var(–fd);font-size:34px;letter-spacing:1px;line-height:1;}
+.sec-title em{color:var(–red2);font-style:normal;}
+.sec-desc{font-size:14px;color:var(–muted);max-width:600px;margin-bottom:36px;padding-left:96px;line-height:1.65;}
+
+.pf-thumb-link{display:block;text-decoration:none;position:relative;}
+.pf-play-overlay{
+position:absolute;inset:0;
+display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+background:rgba(0,0,0,.6);
+transition:background .2s;
+text-align:center;
+padding:16px;
+}
+.pf-thumb-link:hover .pf-play-overlay{background:rgba(0,0,0,.78);}
+.pf-play-btn{
+width:56px;height:56px;border-radius:50%;
+background:var(–red);
+display:flex;align-items:center;justify-content:center;
+font-size:20px;color:#fff;
+box-shadow:0 4px 24px rgba(176,16,16,.55);
+transition:transform .2s,box-shadow .2s;
+}
+.pf-thumb-link:hover .pf-play-btn{transform:scale(1.12);box-shadow:0 8px 32px rgba(176,16,16,.8);}
+.pf-click-label{
+font-size:11px;font-weight:700;
+letter-spacing:2px;text-transform:uppercase;
+color:rgba(255,255,255,.65);
+transition:color .2s;
+}
+.pf-thumb-link:hover .pf-click-label{color:#fff;}
+.pf-top-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:6px;}
+.pf-price{font-family:var(–fd);font-size:16px;color:var(–red2);line-height:1;flex-shrink:0;white-space:nowrap;}
+.pf-caption{font-size:11.5px;color:var(–muted);line-height:1.6;margin:6px 0 10px;border-top:1px solid var(–dim);padding-top:8px;}
+.pf-caption strong{color:var(–white);font-weight:700;}
+.pf-card–empty{opacity:.45;}
+
+/* PRICE FILTER */
+.price-filter{
+background:var(–bg2);
+border:1px solid var(–border);
+border-radius:14px;
+padding:18px 22px 16px;
+margin-bottom:28px;
+}
+.pf-filter-head{
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:14px;
+}
+.pf-filter-label{
+font-size:12px;font-weight:700;
+letter-spacing:1px;text-transform:uppercase;
+color:var(–muted);
+}
+.pf-filter-val{
+font-family:var(–fd);font-size:24px;
+color:var(–red2);line-height:1;
+transition:color .15s;
+}
+.slider-wrap{
+position:relative;height:4px;
+background:var(–dim);
+border-radius:2px;margin-bottom:10px;
+}
+.slider-track-fill{
+position:absolute;left:0;top:0;height:100%;
+background:linear-gradient(to right,var(–red),var(–red2));
+border-radius:2px;width:100%;
+transition:width .1s;
+pointer-events:none;
+}
+input[type=range]#priceSlider{
+position:absolute;inset:0;width:100%;
+-webkit-appearance:none;appearance:none;
+background:transparent;cursor:pointer;
+height:4px;margin:0;
+}
+input[type=range]#priceSlider::-webkit-slider-thumb{
+-webkit-appearance:none;
+width:22px;height:22px;
+border-radius:50%;
+background:var(–white);
+border:3px solid var(–red2);
+box-shadow:0 2px 12px rgba(176,16,16,.5);
+margin-top:-9px;
+transition:transform .15s,box-shadow .15s;
+}
+input[type=range]#priceSlider::-webkit-slider-thumb:hover{
+transform:scale(1.15);
+box-shadow:0 4px 20px rgba(176,16,16,.7);
+}
+input[type=range]#priceSlider::-webkit-slider-runnable-track{
+background:transparent;height:4px;
+}
+input[type=range]#priceSlider::-moz-range-thumb{
+width:22px;height:22px;border-radius:50%;
+background:var(–white);border:3px solid var(–red2);
+box-shadow:0 2px 12px rgba(176,16,16,.5);
+cursor:pointer;
+}
+.slider-minmax{
+display:flex;justify-content:space-between;
+font-size:11px;color:var(–muted);font-weight:600;
+}
+
+/* SUBTABS */
+.subtab-row{
+display:flex;gap:8px;flex-wrap:wrap;
+margin-bottom:28px;
+}
+.subtab{
+font-family:var(–fb);
+font-size:12px;font-weight:700;
+letter-spacing:.5px;
+padding:8px 18px;border-radius:100px;
+background:var(–bg3);
+border:1px solid rgba(255,255,255,.07);
+color:var(–muted);
+cursor:pointer;
+transition:all .2s;
+white-space:nowrap;
+}
+.subtab:hover{border-color:rgba(176,16,16,.3);color:var(–white);}
+.subtab.active{
+background:var(–red);
+border-color:var(–red2);
+color:#fff;
+box-shadow:0 3px 16px rgba(176,16,16,.35);
+}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.pf-card{background:var(–bg2);border:1px solid rgba(255,255,255,.05);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s;}
+.pf-card:hover{border-color:rgba(176,16,16,.35);transform:translateY(-4px);}
+.pf-thumb{width:100%;aspect-ratio:1/1;background:var(–bg3);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pf-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.2;}
+.pf-play{font-size:36px;}
+.pf-pl-text{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–white);}
+.pf-embed{width:100%;height:100%;position:absolute;inset:0;border:none;}
+.pf-info{padding:12px 14px;}
+.pf-cat{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(–red2);margin-bottom:4px;line-height:1.3;}
+.pf-title{font-size:14px;font-weight:700;color:var(–white);margin-bottom:4px;}
+.pf-meta{font-size:12px;color:var(–muted);}
+.pf-link{
+display:inline-flex;align-items:center;gap:6px;
+margin-top:10px;
+font-size:12px;font-weight:800;
+letter-spacing:1px;text-transform:uppercase;
+color:#fff;text-decoration:none;
+background:var(–red);
+padding:9px 16px;border-radius:8px;
+transition:background .2s, gap .15s;
+box-shadow:0 3px 14px rgba(176,16,16,.35);
+}
+.pf-link:hover{background:var(–red2);gap:10px;}
+
+.add-hint{background:var(–bg2);border:1px dashed rgba(176,16,16,.18);border-radius:14px;padding:28px;text-align:center;margin-top:16px;}
+.ah-icon{font-size:24px;margin-bottom:8px;}
+.ah-title{font-size:13px;font-weight:700;color:var(–muted);margin-bottom:6px;}
+.ah-text{font-size:12px;color:rgba(82,80,78,.55);line-height:1.6;}
+.ah-code{display:inline-block;margin-top:12px;background:var(–bg3);border:1px solid var(–dim);border-radius:8px;padding:10px 16px;font-family:monospace;font-size:12px;color:var(–red2);text-align:left;line-height:1.8;}
+
+/* CASES */
+.cases-grid{display:grid;gap:14px;}
+.case-card{background:var(–bg2);border:1px solid rgba(255,255,255,.05);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;transition:border-color .2s;}
+.case-card:hover{border-color:rgba(176,16,16,.3);}
+.case-left{padding:32px;border-right:1px solid var(–dim);}
+.case-niche{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–red2);margin-bottom:8px;}
+.case-title{font-family:var(–fd);font-size:26px;line-height:1.1;margin-bottom:12px;}
+.case-desc{font-size:13px;color:var(–muted);line-height:1.65;}
+.case-right{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:18px;}
+.case-link{
+display:inline-flex;align-items:center;gap:6px;
+margin-top:14px;
+font-size:11px;font-weight:700;
+letter-spacing:1px;text-transform:uppercase;
+color:var(–red2);text-decoration:none;
+transition:gap .2s;
+}
+.case-link:hover{gap:10px;}
+.cs-val{font-family:var(–fd);font-size:36px;color:var(–red2);line-height:1;}
+.cs-label{font-size:11px;color:var(–muted);font-weight:600;}
+.case-ph{background:var(–bg2);border:1px dashed rgba(176,16,16,.18);border-radius:14px;padding:36px;text-align:center;}
+.cp-icon{font-size:28px;margin-bottom:10px;}
+.cp-title{font-size:13px;font-weight:700;color:var(–muted);margin-bottom:5px;}
+.cp-text{font-size:12px;color:rgba(82,80,78,.55);line-height:1.6;}
+
+/* SERVICES */
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:8px;}
+.srv-card{
+background:var(–bg2);border:1px solid rgba(255,255,255,.05);
+border-radius:14px;padding:22px 20px;
+display:flex;flex-direction:column;gap:0;
+transition:border-color .2s,transform .2s;
+position:relative;overflow:hidden;
+}
+.srv-card:hover{border-color:rgba(176,16,16,.3);transform:translateY(-3px);}
+.srv-card::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(–red),transparent);}
+.srv-icon{font-size:26px;margin-bottom:12px;}
+.srv-name{font-family:var(–fd);font-size:22px;letter-spacing:.5px;margin-bottom:8px;}
+.srv-desc{font-size:12.5px;color:var(–muted);line-height:1.6;flex:1;margin-bottom:14px;}
+.srv-price{font-family:var(–fd);font-size:26px;color:var(–red2);line-height:1;margin-bottom:14px;}
+.srv-price span{font-size:14px;color:var(–muted);font-family:var(–fb);font-weight:600;}
+.srv-btn{
+display:block;text-align:center;text-decoration:none;
+background:var(–red);border:1px solid var(–red2);
+color:#fff;font-size:11px;font-weight:800;
+letter-spacing:1.5px;text-transform:uppercase;
+padding:11px;border-radius:8px;
+transition:background .2s,transform .15s;
+box-shadow:0 3px 14px rgba(176,16,16,.3);
+}
+.srv-btn:hover{background:var(–red2);transform:translateY(-1px);}
+
+/* PACKAGES */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:760px){.pkg-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.pkg-grid{grid-template-columns:1fr;}}
+.pkg{
+background:var(–bg2);border:1px solid rgba(255,255,255,.05);
+border-radius:14px;padding:24px 20px;
+display:flex;flex-direction:column;
+transition:border-color .2s,transform .2s;
+position:relative;
+}
+.pkg:hover{border-color:rgba(176,16,16,.3);transform:translateY(-3px);}
+.pkg-featured{
+border-color:var(–red);
+background:linear-gradient(160deg,rgba(176,16,16,.08),var(–bg2));
+}
+.pkg-flagship{
+grid-column:1/-1;
+border-color:rgba(232,160,32,.4);
+background:linear-gradient(135deg,rgba(176,16,16,.08),rgba(232,160,32,.04),var(–bg2));
+display:grid;grid-template-columns:1fr 1fr;
+gap:20px;align-items:start;
+}
+@media(max-width:600px){.pkg-flagship{grid-template-columns:1fr;}}
+.pkg-hit{
+position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+background:var(–red);color:#fff;
+font-size:9px;font-weight:800;letter-spacing:2px;
+padding:4px 14px;border-radius:0 0 8px 8px;
+}
+.pkg-flag-badge{
+font-family:var(–fd);font-size:22px;
+color:rgba(232,160,32,.9);
+letter-spacing:1px;margin-bottom:6px;
+grid-column:1/-1;
+}
+.pkg-label{
+font-family:var(–fd);font-size:26px;
+letter-spacing:1px;margin-bottom:4px;
+}
+.pkg-tagline{font-size:12px;color:var(–muted);margin-bottom:14px;line-height:1.4;}
+.pkg-price{
+font-family:var(–fd);font-size:34px;
+color:var(–red2);line-height:1;margin-bottom:16px;
+}
+.pkg-price span{font-size:15px;color:var(–muted);font-family:var(–fb);font-weight:600;}
+.pkg-save{font-size:11px;color:rgba(39,174,96,.85);font-weight:700;margin-bottom:14px;letter-spacing:.3px;}
+.pkg-list{list-style:none;flex:1;margin-bottom:16px;}
+.pkg-list li{
+font-size:13px;color:var(–muted);
+padding:6px 0 6px 18px;position:relative;
+border-bottom:1px solid rgba(255,255,255,.04);
+}
+.pkg-list li:last-child{border-bottom:none;}
+.pkg-list li::before{content:‘✓’;position:absolute;left:0;color:var(–red2);font-weight:700;}
+.pkg-flag-btn{background:rgba(232,160,32,.15);border-color:rgba(232,160,32,.4);color:rgba(232,160,32,.9);}
+.pkg-flag-btn:hover{background:rgba(232,160,32,.25);border-color:rgba(232,160,32,.6);}
+
+/* TARIFFS old (keep for reference) */
+.tariff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.tariff{background:var(–bg2);border:1px solid rgba(255,255,255,.05);border-radius:16px;overflow:hidden;position:relative;transition:border-color .2s,transform .2s;}
+.tariff:hover{border-color:rgba(176,16,16,.35);transform:translateY(-4px);}
+.tariff.featured{border-color:var(–red);background:linear-gradient(160deg,rgba(176,16,16,.07),var(–bg2));}
+.tariff.featured::before{content:‘ХИТ’;position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(–red);color:#fff;font-size:9px;font-weight:800;letter-spacing:2px;padding:4px 14px;border-radius:0 0 8px 8px;}
+.t-top{padding:28px 24px 20px;border-bottom:1px solid var(–dim);}
+.t-name{font-family:var(–fd);font-size:28px;margin-bottom:4px;letter-spacing:1px;}
+.t-price{font-family:var(–fd);font-size:42px;color:var(–red2);line-height:1;margin-bottom:6px;}
+.t-price span{font-size:18px;color:var(–muted);}
+.t-sub{font-size:12px;color:var(–muted);}
+.t-body{padding:20px 24px;}
+.t-list{list-style:none;}
+.t-list li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(–muted);display:flex;align-items:flex-start;gap:8px;}
+.t-list li:last-child{border-bottom:none;}
+.t-list li::before{content:‘✓’;color:var(–red2);font-weight:700;flex-shrink:0;margin-top:1px;}
+.t-btn{display:block;margin:20px 24px 24px;background:var(–red);border:1px solid var(–red2);border-radius:10px;padding:14px;text-align:center;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;transition:background .2s,transform .15s;box-shadow:0 3px 16px rgba(176,16,16,.3);}
+.t-btn:hover{background:var(–red2);transform:translateY(-1px);}
+.tariff.featured .t-btn{background:var(–red);border-color:var(–red2);color:#fff;}
+.tariff.featured .t-btn:hover{background:var(–red2);}
+.t-note{background:var(–bg2);border:1px dashed rgba(176,16,16,.18);border-radius:12px;padding:20px 24px;text-align:center;margin-top:16px;font-size:12px;color:rgba(82,80,78,.6);}
+
+/* RULES */
+.rules-new{display:flex;flex-direction:column;gap:10px;}
+.rn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.rn-row-3{grid-template-columns:1fr 1fr 1fr;}
+.rn-card{background:var(–bg2);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:28px 26px 22px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;}
+.rn-card:hover{border-color:rgba(176,16,16,.3);transform:translateY(-3px);}
+.rn-card::after{content:’’;position:absolute;bottom:0;right:0;width:80px;height:80px;background:radial-gradient(circle,rgba(176,16,16,.07),transparent);border-radius:50%;pointer-events:none;}
+.rn-card.rn-accent{border-color:rgba(176,16,16,.22);background:linear-gradient(135deg,rgba(176,16,16,.06),var(–bg2));}
+.rn-card.rn-accent::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(–red),transparent);}
+.rn-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.rn-num{font-family:var(–fd);font-size:12px;color:var(–red);letter-spacing:2px;background:rgba(176,16,16,.1);border:1px solid rgba(176,16,16,.2);border-radius:6px;padding:3px 10px;}
+.rn-ico{font-size:26px;}
+.rn-title{font-family:var(–fd);font-size:21px;line-height:1.1;color:var(–white);margin-bottom:10px;letter-spacing:.5px;}
+.rn-text{font-size:13px;color:var(–muted);line-height:1.65;}
+.rn-text strong{color:var(–white);font-weight:700;}
+.rn-text em{color:var(–red2);font-style:normal;font-weight:600;}
+.rn-tag{display:inline-block;margin-top:14px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;}
+.tag-r{background:var(–red3);border:1px solid var(–border);color:var(–red2);}
+.tag-g{background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);color:#5cb85c;}
+.tag-d{background:var(–bg3);border:1px solid var(–dim);color:var(–muted);}
+.rn-refuse{background:var(–bg2);border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.rn-rl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–red2);flex-shrink:0;}
+.rn-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.rc{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:rgba(176,16,16,.07);border:1px solid rgba(176,16,16,.14);color:var(–muted);transition:color .2s,border-color .2s;}
+.rc:hover{color:var(–red2);border-color:var(–red);}
+
+/* ACCEPT */
+/* ACCEPT INSTRUCTION */
+.accept-instruction{margin-top:32px;margin-bottom:16px;background:var(–bg2);border:1px solid var(–border);border-radius:14px;padding:20px 24px;}
+.ai-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–red2);margin-bottom:16px;}
+.ai-steps{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.ai-step{display:flex;align-items:center;gap:10px;flex:1;min-width:120px;}
+.ai-num{width:28px;height:28px;border-radius:50%;background:var(–red);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ai-text{font-size:13px;color:var(–white);font-weight:600;line-height:1.4;}
+.ai-arrow{font-size:18px;color:var(–red2);flex-shrink:0;}
+@media(max-width:540px){.ai-steps{flex-direction:column;align-items:flex-start;}.ai-arrow{transform:rotate(90deg);}}
+
+.accept-block{margin-top:56px;border:1px solid var(–border);border-radius:20px;overflow:hidden;background:var(–bg2);transition:border-color .4s,background .4s;}
+.accept-block.done{border-color:var(–red2);background:rgba(176,16,16,.04);}
+.accept-hd{padding:24px 28px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(–dim);}
+.accept-hl{display:flex;align-items:center;gap:12px;}
+.accept-ico{font-size:26px;line-height:1;flex-shrink:0;}
+.accept-ttl{font-size:14px;font-weight:800;color:var(–white);margin-bottom:3px;}
+.accept-sub{font-size:12px;color:var(–muted);line-height:1.5;}
+.accept-ps{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.ap{font-size:11px;font-weight:600;padding:4px 11px;border-radius:20px;background:var(–bg3);border:1px solid var(–dim);color:var(–muted);}
+.accept-ac{padding:22px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.accept-cw{flex:1;min-width:180px;}
+.accept-cl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–muted);margin-bottom:6px;}
+.accept-code{font-family:var(–fd);font-size:34px;color:var(–red2);letter-spacing:5px;line-height:1;margin-bottom:5px;text-shadow:0 0 20px rgba(224,21,21,.28);}
+.accept-ch{font-size:11px;color:var(–muted);line-height:1.5;}
+@keyframes fadeCodeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.accept-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(–bg3);border:1px solid var(–border);color:var(–white);font-family:var(–fb);font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:15px 30px;border-radius:12px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .2s,border-color .2s,transform .15s,box-shadow .2s;}
+.accept-btn:hover{background:var(–red3);border-color:var(–red);transform:translateY(-2px);box-shadow:0 6px 24px rgba(176,16,16,.2);}
+.accept-btn.done-btn{background:var(–bg4);border-color:rgba(176,16,16,.3);color:var(–muted);}
+.accept-bw{height:3px;background:var(–dim);overflow:hidden;}
+.accept-bar{height:100%;width:0%;background:linear-gradient(to right,var(–red),var(–red2));transition:width .7s cubic-bezier(.4,0,.2,1);}
+
+/* RESPONSIVE */
+@media(max-width:760px){
+.hero-inner{grid-template-columns:1fr;padding:40px 20px 40px;gap:32px;}
+.hero-photo-wrap{align-items:flex-start;}
+.photo-box{width:170px;height:220px;}
+.photo-stats{width:170px;}
+.stats-bar,.wrap{padding-left:20px;padding-right:20px;}
+.stats-row{grid-template-columns:1fr 1fr;}
+.tab-nav-inner{padding:0 16px;}
+.tariff-grid{grid-template-columns:1fr;}
+.case-card{grid-template-columns:1fr;}
+.case-left{border-right:none;border-bottom:1px solid var(–dim);}
+.rn-row,.rn-row-3{grid-template-columns:1fr;}
+.accept-hd{flex-direction:column;}
+.accept-ac{flex-direction:column;align-items:flex-start;}
+.accept-btn{width:100%;justify-content:center;}
+.sec-desc{padding-left:0;}
+}
+@media(max-width:480px){
+.portfolio-grid{grid-template-columns:1fr;}
+.hero-logo{font-size:68px;}
+}
+</style>
+
+<noscript></noscript>
+
+</head>
+<body>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-wm">DOROHIN</div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-live"><span class="live-dot"></span>Доступен для заказов</div>
+      <div class="hero-logo"><span class="logo-z">D</span><span class="logo-r">O</span><span class="logo-z">ROHIN</span></div>
+      <div class="hero-offer">
+        <div class="hero-offer-main">Монтаж который приносит<br><em>заявки с контента</em></div>
+        <div class="hero-offer-sub">Для экспертов, блогеров и бизнеса — видео которое досматривают, алгоритм продвигает и подписчики пишут сами</div>
+      </div>
+      <div class="sw-row">
+        <span class="sw ae"><span>Ae</span>After Effects</span>
+        <span class="sw pr"><span>Pr</span>Premiere Pro</span>
+        <span class="sw ps"><span>Ps</span>Photoshop</span>
+      </div>
+      <div class="hero-name">Дорохин Даниил · Основатель агентства</div>
+
+```
+  <div class="hero-socials">
+    <div class="hs-label">↓ Подписывайся</div>
+    <a class="hs" href="https://www.tiktok.com/@dorohin_daniil?_r=1&_t=ZP-959fg3OfTqx" target="_blank">
+      <span class="hs-icon">🎵</span>TikTok
+    </a>
+    <a class="hs" href="https://www.instagram.com/daniill_dorohin?igsh=MTc3am84Z2M3a2RmMw%3D%3D&utm_source=qr" target="_blank">
+      <span class="hs-icon">📸</span>Instagram
+    </a>
+    <a class="hs" href="https://t.me/zroven" target="_blank">
+      <span class="hs-icon">✈</span>Telegram
+    </a>
+  </div>
+  <a class="hero-tg" href="https://t.me/zroven" target="_blank">✈ Написать @zroven</a>
+</div>
+<div class="hero-photo-wrap">
+  <div class="photo-box logo-box">
+    <div class="logo-anim">
+      <div class="logo-glow"></div>
+      <div class="logo-text"><span class="logo-d">D</span><span class="logo-rest">OROHIN</span></div>
+      <div class="logo-tag-line">Motion · Edit · Grow</div>
+      <div class="logo-pulse"></div>
+    </div>
+  </div>
+  <div class="photo-stats">
+    <div class="pstat"><div class="pstat-val">4</div><div class="pstat-label">Года</div></div>
+    <div class="pstat"><div class="pstat-val">2000+</div><div class="pstat-label">Монтажей</div></div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- STATS — сразу после hero -->
+
+<div class="stats-bar">
+  <div class="stats-row">
+    <div class="si"><div class="si-val">2000+</div><div class="si-label">Смонтировано</div></div>
+    <div class="si"><div class="si-val">100+</div><div class="si-label">Роликов-миллионников</div></div>
+    <div class="si"><div class="si-val">57</div><div class="si-label">Роликов 500К+ одному клиенту</div></div>
+    <div class="si"><div class="si-val">21</div><div class="si-label">Роликов 1М+ одному клиенту</div></div>
+    <div class="si"><div class="si-val">48ч</div><div class="si-label">Черновик</div></div>
+    <div class="si"><div class="si-val">4 года</div><div class="si-label">Опыта</div></div>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+
+<nav class="tab-nav">
+  <div class="tab-nav-hint">Выбирай раздел нажимая на кнопки</div>
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="showTab('portfolio',this)">
+      <span class="tab-icon">🎬</span>
+      <span class="tab-label">Работы</span>
+    </button>
+    <button class="tab-btn" onclick="showTab('cases',this)">
+      <span class="tab-icon">📈</span>
+      <span class="tab-label">Кейсы</span>
+    </button>
+    <button class="tab-btn" onclick="showTab('tariffs',this)">
+      <span class="tab-icon">💼</span>
+      <span class="tab-label">Услуги</span>
+    </button>
+    <button class="tab-btn" onclick="showTab('packages',this)">
+      <span class="tab-icon">📦</span>
+      <span class="tab-label">Пакеты</span>
+    </button>
+    <button class="tab-btn" onclick="showTab('faq',this)">
+      <span class="tab-icon">❓</span>
+      <span class="tab-label">FAQ</span>
+    </button>
+    <button class="tab-btn" onclick="showTab('reviews',this)">
+      <span class="tab-icon">⭐</span>
+      <span class="tab-label">Отзывы</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════ TAB: ПРИМЕРЫ РАБОТ ════ -->
+
+<div class="section active" id="tab-portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div><div class="sec-eyebrow">Портфолио</div><div class="sec-title">ПРИМЕРЫ <em>РАБОТ</em></div></div>
+    </div>
+    <p class="sec-desc">Нажми на карточку — откроется видео в Telegram.</p>
+
+```
+<!-- SUBTABS -->
+<div class="subtab-row">
+  <button class="subtab active" onclick="filterPortfolio('all', this)">Все</button>
+  <button class="subtab" onclick="filterPortfolio('talk', this)">Разговорные видео</button>
+  <button class="subtab" onclick="filterPortfolio('motion', this)">Motion</button>
+  <button class="subtab" onclick="filterPortfolio('ad', this)">Рекламный Motion</button>
+</div>
+
+<!-- PRICE SLIDER -->
+<div class="price-filter">
+  <div class="pf-filter-head">
+    <span class="pf-filter-label">💰 Цена до</span>
+    <span class="pf-filter-val" id="priceDisplay">5 000 ₽</span>
+  </div>
+  <div class="slider-wrap">
+    <input
+      type="range"
+      id="priceSlider"
+      min="0" max="5000" step="100" value="5000"
+      oninput="filterByPrice(this.value)"
+    >
+    <div class="slider-track-fill" id="sliderFill"></div>
+  </div>
+  <div class="slider-minmax">
+    <span>0 ₽</span>
+    <span>5 000 ₽</span>
+  </div>
+</div>
+
+<div class="portfolio-grid" id="portfolioGrid">
+
+  <!-- 1: ЯК — рекламный motion -->
+  <div class="pf-card" data-cat="ad" data-price="4000">
+    <a href="https://t.me/c/3769438077/4/9" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Рекламный Motion · AE</span><span class="pf-price">4 000 ₽</span></div>
+      <div class="pf-title">Motion в стиле Яндекс Карт</div>
+      <div class="pf-caption">Когда анимация сделана плавно — её не замечают. Просто смотрят и не могут остановиться.<br><br>Это не шаблон. Каждое движение выставлено вручную.<br><br><strong>Именно так выглядит монтаж за который платят.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/9" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 2: ЯМ — рекламный motion -->
+  <div class="pf-card" data-cat="ad" data-price="4500">
+    <a href="https://t.me/c/3769438077/4/10" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Рекламный Motion · AE</span><span class="pf-price">4 500 ₽</span></div>
+      <div class="pf-title">Motion в стиле Яндекс Музыки</div>
+      <div class="pf-caption">Цвета, ликвиды, переходы — всё выставлено вручную.<br><br>Дешёвая картинка = дешёвый эксперт в голове клиента.<br><br><strong>Один ролик меняет то как тебя воспринимают. Навсегда.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/10" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 3: Блог — разговорное -->
+  <div class="pf-card" data-cat="talk" data-price="2700">
+    <a href="https://t.me/c/3769438077/4/14" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Динамичный монтаж</span><span class="pf-price">2 700 ₽</span></div>
+      <div class="pf-title">Новый стиль для блога</div>
+      <div class="pf-caption">Видео из собственного блога. Динамичный монтаж помог сформировать фирменный стиль и дать старт развитию.<br><br><strong>Результат: новый визуальный стиль, начало роста аудитории.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/14" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 4: Юрист — motion -->
+  <div class="pf-card" data-cat="motion" data-price="3900">
+    <a href="https://t.me/c/3769438077/4/15" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Motion · After Effects</span><span class="pf-price">3 900 ₽</span></div>
+      <div class="pf-title">Motion для юриста по банкротству</div>
+      <div class="pf-caption">Юридическая ниша — одна из самых конкурентных. Нужна была картинка которая сразу внушает доверие и выделяет среди других.<br><br><strong>Помогли сделать сильный старт и начать приносить результат.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/15" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 5: Маркетолог 600к — разговорное -->
+  <div class="pf-card" data-cat="talk" data-price="5000">
+    <a href="https://t.me/c/3769438077/4/17" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Динамичный монтаж</span><span class="pf-price">5 000 ₽</span></div>
+      <div class="pf-title">Эксперт по маркетингу · 600К просмотров</div>
+      <div class="pf-caption">Первое видео с нашим монтажом — и сразу в тренды.<br><br>Правильный ритм, удержание, акценты — алгоритм продвинул сам.<br><br><strong>600 000 просмотров с первого видео.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/17" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 6: Малый бизнес — motion+динамика -->
+  <div class="pf-card" data-cat="motion" data-price="3500">
+    <a href="https://t.me/c/3769438077/4/28" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Динамика + Motion</span><span class="pf-price">3 500 ₽</span></div>
+      <div class="pf-title">Эксперт по развитию малого бизнеса</div>
+      <div class="pf-caption">Клиент только начинал вести блог. Нужен был контент который даст первые просмотры и первую аудиторию.<br><br><strong>Помогли набрать первых подписчиков и выйти на стабильные охваты.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/28" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 7: Авто из Китая — разговорное -->
+  <div class="pf-card" data-cat="talk" data-price="1200">
+    <a href="https://t.me/c/3769438077/4/29" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Динамичный монтаж</span><span class="pf-price">1 200 ₽</span></div>
+      <div class="pf-title">Авто из Китая и Кореи</div>
+      <div class="pf-caption">Компания по привозке автомобилей из Китая и Кореи. Нужен был быстрый динамичный монтаж под аудиторию.<br><br><strong>Видео набрало 1.7М просмотров. Пошли заявки.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/29" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 8: Предприниматель motion 5к -->
+  <div class="pf-card" data-cat="motion" data-price="5000">
+    <a href="https://t.me/c/3769438077/4/30" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Motion · After Effects</span><span class="pf-price">5 000 ₽</span></div>
+      <div class="pf-title">Motion для предпринимателя</div>
+      <div class="pf-caption">Полноценный motion-монтаж для предпринимателя. Анимированные акценты, динамичный ритм, цветокоррекция под бренд.<br><br><strong>Картинка которая сразу показывает — это серьёзный уровень.</strong></div>
+      <a class="pf-link" href="https://t.me/c/3769438077/4/30" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 9: Эксперт по продвижению — разговорное -->
+  <div class="pf-card" data-cat="talk" data-price="1700">
+    <a href="https://t.me/portfdorohin/4/32" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Динамичный монтаж</span><span class="pf-price">1 700 ₽</span></div>
+      <div class="pf-title">Эксперт по продвижению</div>
+      <div class="pf-caption">Аккуратный и красивый динамичный монтаж для эксперта по продвижению.<br><br><strong>Помог набрать первую аудиторию в блог.</strong></div>
+      <a class="pf-link" href="https://t.me/portfdorohin/4/32" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+  <!-- 10: Эксперт по здоровью — разговорное -->
+  <div class="pf-card" data-cat="talk" data-price="1300">
+    <a href="https://t.me/portfdorohin/4/35" target="_blank" class="pf-thumb-link">
+      <div class="pf-thumb"><div class="pf-play-overlay"><div class="pf-play-btn">▶</div><div class="pf-click-label">Кликни для просмотра</div></div></div>
+    </a>
+    <div class="pf-info">
+      <div class="pf-top-row"><span class="pf-cat">Динамичный монтаж</span><span class="pf-price">1 300 ₽</span></div>
+      <div class="pf-title">Эксперт по здоровью</div>
+      <div class="pf-caption">Динамичный монтаж для эксперта по здоровью. Чистый, аккуратный, удерживающий.<br><br><strong>Помог привести первую аудиторию в блог.</strong></div>
+      <a class="pf-link" href="https://t.me/portfdorohin/4/35" target="_blank">Смотреть в Telegram →</a>
+    </div>
+  </div>
+
+</div>
+  <div class="ah-icon">📌</div>
+  <div class="ah-title">Как добавить новое видео</div>
+  <div class="ah-text">Скопируй карточку. Поменяй href и data-cat (talk / motion / ad). Замени текст.</div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ════ TAB: КЕЙСЫ ════ -->
+
+<div class="section" id="tab-cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div><div class="sec-eyebrow">Результаты клиентов</div><div class="sec-title">КЕЙСЫ И <em>ЦИФРЫ</em></div></div>
+    </div>
+    <p class="sec-desc">Реальные цифры. Реальные клиенты. Нажми на кейс — откроется видео.</p>
+
+```
+<div class="cases-grid">
+
+  <!-- ══ КЕЙС 1: Гипнолог 3.1М ══ -->
+  <div class="case-card">
+    <div class="case-left">
+      <div class="case-niche">Гипнолог · Instagram Reels</div>
+      <div class="case-title">Видео которое<br>взорвало нишу</div>
+      <div class="case-desc">Разговорное видео для гипнолога. Правильный монтаж, динамика, акценты — и алгоритм подхватил.</div>
+      <a class="case-link" href="https://www.instagram.com/reel/DNDHjWnopuz/?igsh=bDlzZDdqN2kxZHJz" target="_blank">Смотреть видео →</a>
+    </div>
+    <div class="case-right">
+      <div><div class="cs-val">3.1М</div><div class="cs-label">Просмотров</div></div>
+      <div><div class="cs-val">2 000</div><div class="cs-label">Заявок с одного видео</div></div>
+    </div>
+  </div>
+
+  <!-- ══ КЕЙС 2: Гипнолог 275К ══ -->
+  <div class="case-card">
+    <div class="case-left">
+      <div class="case-niche">Гипнолог · Instagram Reels</div>
+      <div class="case-title">Второе видео —<br>снова в тренды</div>
+      <div class="case-desc">Тот же клиент, другое видео. Системный подход к монтажу даёт стабильный результат, а не разовый залёт.</div>
+      <a class="case-link" href="https://www.instagram.com/reel/DMj94J_ot-O/?igsh=MWRzN2pqdHJlOGd2dQ==" target="_blank">Смотреть видео →</a>
+    </div>
+    <div class="case-right">
+      <div><div class="cs-val">275К</div><div class="cs-label">Просмотров</div></div>
+      <div><div class="cs-val">↑</div><div class="cs-label">Стабильный рост канала</div></div>
+    </div>
+  </div>
+
+  <!-- ══ КЕЙС 3: Авто из Кореи 1.7М ══ -->
+  <div class="case-card">
+    <div class="case-left">
+      <div class="case-niche">Авто из Кореи и Китая · Reels</div>
+      <div class="case-title">Бизнес видео<br>в миллион</div>
+      <div class="case-desc">Компания привозит автомобили из Кореи и Китая в Россию. Нужен был контент который бьёт в боль покупателя и вызывает доверие.</div>
+      <a class="case-link" href="https://www.instagram.com/reel/DLj9gDVIPeD/?igsh=djRsdDJwM3lxMzhi" target="_blank">Смотреть видео →</a>
+    </div>
+    <div class="case-right">
+      <div><div class="cs-val">1.7М</div><div class="cs-label">Просмотров</div></div>
+      <div><div class="cs-val">↑ подп.</div><div class="cs-label">Рост подписчиков и заявки</div></div>
+    </div>
+  </div>
+
+  <!-- ══ КЕЙС 4: Авто 446К ══ -->
+  <div class="case-card">
+    <div class="case-left">
+      <div class="case-niche">Авто из Кореи и Китая · Reels</div>
+      <div class="case-title">Второй залёт<br>той же компании</div>
+      <div class="case-desc">Второе видео для той же авто-компании. Когда монтаж системный — каждое видео работает, а не только «то самое вирусное».</div>
+      <a class="case-link" href="https://www.instagram.com/reel/DLpiGBToPih/?igsh=aDE5N2hiaTBoenV2" target="_blank">Смотреть видео →</a>
+    </div>
+    <div class="case-right">
+      <div><div class="cs-val">446К</div><div class="cs-label">Просмотров</div></div>
+      <div><div class="cs-val">↑ заявки</div><div class="cs-label">Рост входящих обращений</div></div>
+    </div>
+  </div>
+
+  <!-- ══ КЕЙС 5: Ресторатор 17К ══ -->
+  <div class="case-card">
+    <div class="case-left">
+      <div class="case-niche">Предприниматель · Ресторатор · Reels</div>
+      <div class="case-title">17 000 подписчиков<br>за 7 недель</div>
+      <div class="case-desc">Предприниматель и ресторатор. Начал с нуля — выстроили систему контента с правильным монтажом под алгоритм. Результат пришёл быстро.</div>
+      <a class="case-link" href="https://www.instagram.com/nikolaevmike?igsh=dG9rdWdwajVkZWFn" target="_blank">Смотреть профиль →</a>
+    </div>
+    <div class="case-right">
+      <div><div class="cs-val">+17К</div><div class="cs-label">Подписчиков</div></div>
+      <div><div class="cs-val">7 нед.</div><div class="cs-label">За 7 недель с нуля</div></div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ════ TAB: УСЛУГИ ════ -->
+
+<div class="section" id="tab-tariffs">
+  <div class="wrap">
+
+```
+<!-- ОДИНОЧНЫЕ УСЛУГИ -->
+<div class="sec-head">
+  <div class="sec-num">03</div>
+  <div><div class="sec-eyebrow">Отдельные услуги</div><div class="sec-title">ЧТО <em>ДЕЛАЕМ</em></div></div>
+</div>
+<p class="sec-desc">Каждую услугу можно заказать отдельно или в составе пакета.</p>
+
+<div class="srv-grid">
+
+  <div class="srv-card">
+    <div class="srv-icon">🎬</div>
+    <div class="srv-name">Монтаж рилса</div>
+    <div class="srv-desc">Динамичный монтаж под платформу. Субтитры, цветокоррекция, ритм под алгоритм. Черновик за 48ч.</div>
+    <div class="srv-price">от 1 500 <span>до 4 900 ₽</span></div>
+    <a class="srv-btn" href="https://t.me/zroven" target="_blank">Заказать</a>
+  </div>
+
+  <div class="srv-card">
+    <div class="srv-icon">✨</div>
+    <div class="srv-name">Motion монтаж</div>
+    <div class="srv-desc">After Effects, анимированные акценты, ликвиды, переходы. Картинка выглядит дорого и профессионально.</div>
+    <div class="srv-price">от 4 000 <span>до 6 000 ₽</span></div>
+    <a class="srv-btn" href="https://t.me/zroven" target="_blank">Заказать</a>
+  </div>
+
+  <div class="srv-card">
+    <div class="srv-icon">📝</div>
+    <div class="srv-name">Сценарий для рилса</div>
+    <div class="srv-desc">Пишу сценарий под твою нишу и аудиторию. Структура, крючок, подача — всё чтобы досматривали до конца.</div>
+    <div class="srv-price">800 <span>— 900 ₽ / рилс</span></div>
+    <a class="srv-btn" href="https://t.me/zroven" target="_blank">Заказать</a>
+  </div>
+
+  <div class="srv-card">
+    <div class="srv-icon">📊</div>
+    <div class="srv-name">Аналитика контента</div>
+    <div class="srv-desc">Анализирую 30 твоих рилсов: что работает, что убивает охваты, почему алгоритм не продвигает. Конкретный отчёт с выводами.</div>
+    <div class="srv-price">15 000 <span>₽</span></div>
+    <a class="srv-btn" href="https://t.me/zroven" target="_blank">Заказать</a>
+  </div>
+
+  <div class="srv-card">
+    <div class="srv-icon">🔍</div>
+    <div class="srv-name">Анализ конкурентов + идеи</div>
+    <div class="srv-desc">Составляю таблицу из 500 самых залетавших видео конкурентов в твоей нише. Готовые идеи для контент-плана на месяцы вперёд.</div>
+    <div class="srv-price">15 000 <span>₽</span></div>
+    <a class="srv-btn" href="https://t.me/zroven" target="_blank">Заказать</a>
+  </div>
+
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ════ TAB: ПАКЕТЫ ════ -->
+
+<div class="section" id="tab-packages">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div><div class="sec-eyebrow">Пакеты услуг</div><div class="sec-title">ПАКЕТЫ <em>ПОД КЛЮЧ</em></div></div>
+    </div>
+    <p class="sec-desc">Выгоднее чем покупать услуги отдельно. Чем больше пакет — тем больше экономия.</p>
+
+```
+<div class="pkg-grid">
+
+  <div class="pkg">
+    <div class="pkg-label">СТАРТ</div>
+    <div class="pkg-tagline">Первый шаг в контент</div>
+    <div class="pkg-price">9 000 <span>₽/мес</span></div><div class="pkg-save">вместо 10 000 ₽ · экономия 10%</div>
+    <ul class="pkg-list">
+      <li>4 рилса — монтаж</li>
+      <li>Субтитры с акцентами</li>
+      <li>Цветокоррекция</li>
+      <li>Черновик за 48–72ч</li>
+    </ul>
+    <a class="t-btn" href="https://t.me/zroven" target="_blank">Написать @zroven</a>
+  </div>
+
+  <div class="pkg">
+    <div class="pkg-label">КОНТЕНТ</div>
+    <div class="pkg-tagline">Снимай — мы сделаем остальное</div>
+    <div class="pkg-price">12 000 <span>₽/мес</span></div><div class="pkg-save">вместо 13 400 ₽ · экономия 10%</div>
+    <ul class="pkg-list">
+      <li>4 сценария для рилсов</li>
+      <li>4 монтажа под сценарий</li>
+      <li>Субтитры + цветокоррекция</li>
+      <li>Черновик за 48ч</li>
+    </ul>
+    <a class="t-btn" href="https://t.me/zroven" target="_blank">Написать @zroven</a>
+  </div>
+
+  <div class="pkg pkg-featured">
+    <div class="pkg-hit">ХИТ</div>
+    <div class="pkg-label">РОСТ</div>
+    <div class="pkg-tagline">Система которая даёт результат</div>
+    <div class="pkg-price">44 000 <span>₽/мес</span></div><div class="pkg-save">вместо 47 800 ₽ · экономия 8%</div>
+    <ul class="pkg-list">
+      <li>8 сценариев</li>
+      <li>8 монтажей (motion)</li>
+      <li>Аналитика 10 видео в месяц</li>
+      <li>Субтитры + цветокоррекция</li>
+      <li>Черновик за 48ч</li>
+      <li>Приоритет в очереди</li>
+    </ul>
+    <a class="t-btn" href="https://t.me/zroven" target="_blank">Написать @zroven</a>
+  </div>
+
+  <div class="pkg">
+    <div class="pkg-label">АВТОРИТЕТ</div>
+    <div class="pkg-tagline">Выделиться на фоне конкурентов</div>
+    <div class="pkg-price">62 000 <span>₽/мес</span></div><div class="pkg-save">вместо 66 800 ₽ · экономия 7%</div>
+    <ul class="pkg-list">
+      <li>8 сценариев</li>
+      <li>8 motion-монтажей AE</li>
+      <li>Анализ конкурентов (разово)</li>
+      <li>Аналитика 20 видео</li>
+      <li>Черновик за 48ч</li>
+      <li>Приоритет + личная связь</li>
+    </ul>
+    <a class="t-btn" href="https://t.me/zroven" target="_blank">Написать @zroven</a>
+  </div>
+
+  <div class="pkg">
+    <div class="pkg-label">ЭКСПОРТ</div>
+    <div class="pkg-tagline">Максимальный объём контента</div>
+    <div class="pkg-price">95 000 <span>₽/мес</span></div><div class="pkg-save">вместо 102 000 ₽ · экономия 7%</div>
+    <ul class="pkg-list">
+      <li>15 сценариев</li>
+      <li>15 motion-монтажей AE</li>
+      <li>Аналитика 30 видео</li>
+      <li>Приоритет в очереди всегда</li>
+      <li>Черновик за 24–48ч</li>
+      <li>Личная связь 24/7</li>
+    </ul>
+    <a class="t-btn" href="https://t.me/zroven" target="_blank">Написать @zroven</a>
+  </div>
+
+  <div class="pkg pkg-flagship">
+    <div class="pkg-flag-badge">👑 ПОЛНОЕ ВЕДЕНИЕ</div>
+    <div class="pkg-tagline">Ты снимаешь — всё остальное на нас</div>
+    <div class="pkg-price">от 130 000 <span>₽/мес</span></div>
+    <ul class="pkg-list">
+      <li>Анализ конкурентов + 500 идей</li>
+      <li>Неограниченные сценарии</li>
+      <li>Весь монтаж (motion AE)</li>
+      <li>Аналитика всего контента</li>
+      <li>Контент-стратегия на месяц</li>
+      <li>Черновик за 24ч</li>
+      <li>Личная связь 24/7</li>
+      <li>Цена фиксируется навсегда</li>
+    </ul>
+    <a class="t-btn pkg-flag-btn" href="https://t.me/zroven" target="_blank">Написать @zroven</a>
+  </div>
+
+</div>
+<div class="t-note">Перед заказом ознакомься с <a href="#" onclick="showTab('rules', document.querySelector('[onclick*=rules]') || this); return false;" style="color:var(--red2);text-decoration:none;font-weight:700;">правилами работы →</a></div>
+```
+
+  </div>
+</div>
+
+<!-- ════ TAB: ПРАВИЛА ════ -->
+
+<div class="section" id="tab-rules">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div><div class="sec-eyebrow">Читай до оплаты</div><div class="sec-title">ПРАВИЛА <em>РАБОТЫ</em></div></div>
+    </div>
+    <p class="sec-desc">Три правила. Всё что нужно знать до начала.</p>
+
+```
+<div class="rules-new">
+  <div class="rn-row rn-row-3">
+
+    <div class="rn-card rn-accent">
+      <div class="rn-top"><div class="rn-num">01</div><div class="rn-ico">💳</div></div>
+      <div class="rn-title">Предоплата 100%.<br>Возврата нет.</div>
+      <div class="rn-text">Берусь сразу после оплаты. Передумал — <strong>возврат невозможен.</strong> Убедись что готов. Срочный монтаж — за доплату.</div>
+      <span class="rn-tag tag-r">Без исключений</span>
+    </div>
+
+    <div class="rn-card">
+      <div class="rn-top"><div class="rn-num">02</div><div class="rn-ico">📋</div></div>
+      <div class="rn-title">Есть ТЗ — 3 правки.<br>Нет ТЗ — креатив, правок нет.</div>
+      <div class="rn-text">С заданием: <strong>3 правки бесплатно</strong>, новая задача = доплата. Без ТЗ: монтирую сам — результат неожиданный, <em>правки не предусмотрены.</em></div>
+      <span class="rn-tag tag-r">Строго</span>
+    </div>
+
+    <div class="rn-card">
+      <div class="rn-top"><div class="rn-num">03</div><div class="rn-ico">💰</div></div>
+      <div class="rn-title">Цена не меняется.<br>Связь — @zroven.</div>
+      <div class="rn-text">Называю сумму до старта — <strong>она финальная.</strong> Скрытых платежей нет. Черновик за 48–72ч. Всё только в <em>Telegram.</em></div>
+      <span class="rn-tag tag-d">Прозрачно</span>
+    </div>
+
+  </div>
+
+  <div class="rn-refuse">
+    <div class="rn-rl">✗ Не работаю с теми кто:</div>
+    <div class="rn-chips">
+      <span class="rc">Грубит или давит</span>
+      <span class="rc">«Сначала сделай, потом оплачу»</span>
+      <span class="rc">Меняет концепцию после сдачи</span>
+      <span class="rc">Срочно без доплаты</span>
+      <span class="rc">Запрещённый контент</span>
+    </div>
+  </div>
+</div>
+
+<!-- ИНСТРУКЦИЯ -->
+<div class="accept-instruction">
+  <div class="ai-title">Как начать работу — 3 шага</div>
+  <div class="ai-steps">
+    <div class="ai-step">
+      <div class="ai-num">1</div>
+      <div class="ai-text">Прочитай правила выше</div>
+    </div>
+    <div class="ai-arrow">→</div>
+    <div class="ai-step">
+      <div class="ai-num">2</div>
+      <div class="ai-text">Нажми кнопку ниже</div>
+    </div>
+    <div class="ai-arrow">→</div>
+    <div class="ai-step">
+      <div class="ai-num">3</div>
+      <div class="ai-text">Просто отправь сообщение которое появится в Telegram</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACCEPT -->
+<div class="accept-block" id="accept">
+  <div class="accept-hd">
+    <div class="accept-hl">
+      <div class="accept-ico">🤝</div>
+      <div>
+        <div class="accept-ttl">Готов работать вместе?</div>
+        <div class="accept-sub">Нажми — откроется Telegram с готовым сообщением. Просто отправь его.</div>
+      </div>
+    </div>
+    <div class="accept-ps">
+      <span class="ap">⚡ 48–72ч</span>
+      <span class="ap">✓ 3 правки</span>
+      <span class="ap">💰 Цена фиксирована</span>
+      <span class="ap">📁 Права твои</span>
+    </div>
+  </div>
+  <div class="accept-ac">
+    <button class="accept-btn" id="acceptBtn" onclick="acceptTerms()">
+      <span id="acceptBtnText">✓ &nbsp;Принимаю условия и пишу Даниилу</span>
+    </button>
+  </div>
+  <div class="accept-bw"><div class="accept-bar" id="acceptBar"></div></div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ════ TAB: FAQ ════ -->
+
+<div class="section" id="tab-faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div><div class="sec-eyebrow">Частые вопросы</div><div class="sec-title">FAQ</div></div>
+    </div>
+    <p class="sec-desc">Ответы на вопросы которые задают чаще всего перед заказом.</p>
+
+```
+<div class="faq-list">
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Как долго ждать готовое видео?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Черновик готов через 48–72 часа с момента получения всех исходников. Отсчёт начинается когда я получил материал — не после оплаты. Нужно быстрее? Срочный монтаж доступен за доплату — уточни в переписке.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Как передать исходники?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Принимаю в любом формате через Telegram, Яндекс Диск или Google Drive. Как удобнее — так и присылай. Если файл тяжёлый — лучше через диск.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Что если мне не понравится результат?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Если черновик не совпал с согласованным ТЗ — переделаю без лишних слов. Три правки по ТЗ включены бесплатно. Если ТЗ не было — монтирую на своё усмотрение и правки не предусмотрены. Поэтому всегда лучше обсудить задачу заранее.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Почему предоплата и нет возврата?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Я начинаю работу сразу после оплаты — моё время уже потрачено. Это стандартная практика в любом агентстве. Именно поэтому всегда обсуждаем задачу до оплаты — чтобы у тебя было полное понимание что и как будет сделано.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Чем motion монтаж отличается от обычного?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Обычный монтаж — склейки, субтитры, цветокоррекция. Motion — это анимированная графика в After Effects: акценты на ключевых словах, ликвиды, переходы, 3D-элементы. Motion делает картинку дорогой визуально — клиент подсознательно воспринимает тебя как эксперта выше уровнем.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Гарантируете ли вы просмотры и подписчиков?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Никто не может гарантировать конкретные цифры — алгоритмы непредсказуемы. Но я делаю монтаж который максимально удерживает внимание и понятен алгоритму. Кейсы говорят сами за себя: 3.1М просмотров, +17К подписчиков за 7 недель, 2000 заявок с одного видео.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Работаете ли вы с нишами которые я не называл?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Да. Монтаж — универсальный инструмент. Работал с гипнологами, предпринимателями, ресторанами, авто-бизнесом. Любая ниша — напиши, разберёмся и сделаем результат.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Нужно ли мне разбираться в монтаже чтобы дать ТЗ?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Нет. Достаточно показать референс — видео которое тебе нравится по стилю. Я сам разберусь что и как делать. Если нет референса — опиши словами: динамичное / спокойное, тёмное / светлое, с текстом / без. Этого достаточно.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Можно ли заказать одно видео без пакета?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Да, каждую услугу можно заказать отдельно. Одно видео, один сценарий, разовая аналитика — всё доступно без обязательной подписки. Посмотри раздел «Услуги».</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">
+      <span>Как с вами связаться?</span>
+      <span class="faq-arrow">▼</span>
+    </div>
+    <div class="faq-a">Только через Telegram — @zroven. Никаких звонков, почт и других мессенджеров. Отвечаю в течение нескольких часов в рабочее время. Напиши задачу сразу — так отвечу быстрее.</div>
+  </div>
+
+</div>
+
+<div style="margin-top:40px;text-align:center;">
+  <a href="https://t.me/zroven" target="_blank" class="hero-tg" style="display:inline-flex;">✈ Остался вопрос? Напиши @zroven</a>
+</div>
+```
+
+  </div>
+</div>
+
+<noscript></noscript>
+
+<style>
+/* FAQ */
+.faq-list { display:flex; flex-direction:column; gap:8px; }
+.faq-item {
+  background:var(--bg2);
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:border-color .2s;
+}
+.faq-item:hover { border-color:rgba(176,16,16,.3); }
+.faq-item.open { border-color:var(--red); }
+.faq-q {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 22px;
+  gap:12px;
+}
+.faq-q span:first-child {
+  font-size:14px; font-weight:700; color:var(--white);
+  line-height:1.4;
+}
+.faq-arrow {
+  font-size:11px; color:var(--red2);
+  flex-shrink:0;
+  transition:transform .25s;
+}
+.faq-item.open .faq-arrow { transform:rotate(180deg); }
+.faq-a {
+  display:none;
+  padding:0 22px 18px;
+  font-size:13.5px; color:var(--muted);
+  line-height:1.7;
+  border-top:1px solid var(--dim);
+  padding-top:14px;
+}
+.faq-item.open .faq-a { display:block; }
+</style>
+
+<!-- ════ TAB: ОТЗЫВЫ ════ -->
+
+<div class="section" id="tab-reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div><div class="sec-eyebrow">Говорят клиенты</div><div class="sec-title">ОТЗЫВЫ</div></div>
+    </div>
+    <p class="sec-desc">Реальные слова реальных людей. Без редактирования.</p>
+
+```
+<div class="rev-grid">
+
+  <div class="rev-card">
+    <div class="rev-top">
+      <div class="rev-avatar">🏋️</div>
+      <div><div class="rev-name">Фитнес-тренер</div><div class="rev-niche">Долгосрочное сотрудничество</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">«Даниил, привет 🤝 Благодарю за работу, как всегда все чётко и в срок! Радует, что ответственно подходишь к своему делу. Результатом роликов я доволен, работаем дальше 😎🔥»</div>
+    <a class="rev-link" href="https://t.me/c/3769438077/6/24" target="_blank">Смотреть отзыв →</a>
+  </div>
+
+  <div class="rev-card">
+    <div class="rev-top">
+      <div class="rev-avatar">👤</div>
+      <div><div class="rev-name">Личный бренд</div><div class="rev-niche">Продвижение и развитие</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">«Помог в продвижении себя как личного бренда. Результат говорит сам за себя.»</div>
+    <a class="rev-link" href="https://t.me/c/3769438077/6/20" target="_blank">Смотреть отзыв →</a>
+  </div>
+
+  <div class="rev-card rev-card--featured">
+    <div class="rev-top">
+      <div class="rev-avatar">🚀</div>
+      <div><div class="rev-name">Предприниматель</div><div class="rev-niche">+17К подписчиков за 7 недель</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">«Работаем с Даней и его командой над созданием контента в больших объемах — ребята отлично выдерживают темп и всегда оперативно на связи.<br><br>Очень ценю, что большинство правок учитываются с первого раза, это реально экономит время.<br><br>Качество монтажа на уровне: видео выглядят стильно — и что самое важное, приносят хорошие конверсии.»</div>
+    <a class="rev-link" href="https://t.me/c/3769438077/6/21" target="_blank">Смотреть отзыв →</a>
+  </div>
+
+  <div class="rev-card">
+    <div class="rev-top">
+      <div class="rev-avatar">📱</div>
+      <div><div class="rev-name">Блогер</div><div class="rev-niche">Развитие блога и результат</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">«Работали вместе, Даня помог мне добиться определенного результата, за это ему большой респект, всем советую, делает свою работу очень качественно»</div>
+    <a class="rev-link" href="https://t.me/c/3769438077/6/22" target="_blank">Смотреть отзыв →</a>
+  </div>
+
+  <div class="rev-card rev-card--video">
+    <div class="rev-top">
+      <div class="rev-avatar">🎬</div>
+      <div><div class="rev-name">Гипнолог</div><div class="rev-niche">Видео-отзыв · 3.1М просмотров · 2000 заявок</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">Клиент у которого видео набрало 3.1 миллиона просмотров и принесло 2000 заявок. Записал видео-отзыв — смотри сам.</div>
+    <a class="rev-link rev-link--video" href="https://t.me/c/3769438077/6/23" target="_blank">▶ Смотреть видео-отзыв →</a>
+  </div>
+
+  <div class="rev-card rev-card--video rev-card--featured">
+    <div class="rev-top">
+      <div class="rev-avatar">🏆</div>
+      <div><div class="rev-name">Фитнес-тренер</div><div class="rev-niche">Видео-отзыв · 21 ролик-миллионник · 220К подписчиков</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">Сделали 21 ролик который набрал 1 000 000+ просмотров. Помогли привести 220 тысяч подписчиков в блог. Клиент записал видео-отзыв.</div>
+    <a class="rev-link rev-link--video" href="https://t.me/portfdorohin/6/31" target="_blank">▶ Смотреть видео-отзыв →</a>
+  </div>
+
+  <div class="rev-card rev-card--video">
+    <div class="rev-top">
+      <div class="rev-avatar">⚖️</div>
+      <div><div class="rev-name">Юрист по банкротству</div><div class="rev-niche">Видео-отзыв · Большая аудитория в блог</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">Помогли юристу по банкротству привести большую аудиторию в блог с нуля. Клиент записал видео-отзыв.</div>
+    <a class="rev-link rev-link--video" href="https://t.me/portfdorohin/6/33" target="_blank">▶ Смотреть видео-отзыв →</a>
+  </div>
+
+  <div class="rev-card">
+    <div class="rev-top">
+      <div class="rev-avatar">🎯</div>
+      <div><div class="rev-name">Продюсер</div><div class="rev-niche">Долгосрочное сотрудничество</div></div>
+      <div class="rev-stars">★★★★★</div>
+    </div>
+    <div class="rev-text">Работаем вместе уже долгое время. Стабильное качество, соблюдение сроков, понимание задачи с первого раза.</div>
+    <a class="rev-link" href="https://t.me/portfdorohin/6/34" target="_blank">Смотреть отзыв →</a>
+  </div>
+
+</div>
+
+<div style="margin-top:40px;text-align:center;">
+  <a href="https://t.me/zroven" target="_blank" class="hero-tg" style="display:inline-flex;">✈ Написать @zroven</a>
+</div>
+```
+
+  </div>
+</div>
+
+<style>
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.rev-card{background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,transform .2s;}
+.rev-card:hover{border-color:rgba(192,57,43,.3);transform:translateY(-3px);}
+.rev-card--featured{border-color:var(--red);background:linear-gradient(135deg,rgba(192,57,43,.06),var(--bg2));}
+.rev-card--video{border-color:rgba(232,160,32,.3);background:linear-gradient(135deg,rgba(232,160,32,.05),var(--bg2));}
+.rev-top{display:flex;align-items:center;gap:12px;}
+.rev-avatar{width:44px;height:44px;border-radius:12px;background:var(--bg3);border:1px solid var(--dim);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.rev-name{font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;}
+.rev-niche{font-size:11px;color:var(--muted);line-height:1.3;}
+.rev-stars{font-size:13px;color:var(--red2);margin-left:auto;flex-shrink:0;letter-spacing:1px;}
+.rev-text{font-size:13px;color:var(--muted);line-height:1.7;flex:1;border-top:1px solid var(--dim);padding-top:12px;}
+.rev-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;text-decoration:none;background:var(--red);padding:9px 16px;border-radius:8px;transition:background .2s;box-shadow:0 3px 14px rgba(192,57,43,.3);align-self:flex-start;}
+.rev-link:hover{background:var(--red2);}
+.rev-link--video{background:rgba(200,140,10,.85);}
+.rev-link--video:hover{background:rgba(232,160,32,1);color:#000;}
+</style>
+
+<script>
+var activeCategory = 'all';
+var maxPrice = 5000;
+
+function filterByPrice(val) {
+  maxPrice = parseInt(val);
+  var display = maxPrice + ' ₽';
+  document.getElementById('priceDisplay').textContent = display;
+  var pct = (maxPrice / 5000) * 100;
+  document.getElementById('sliderFill').style.width = pct + '%';
+  applyFilters();
+}
+
+function filterPortfolio(cat, btn) {
+  var btns = document.querySelectorAll('.subtab');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  btn.classList.add('active');
+  activeCategory = cat;
+  applyFilters();
+}
+
+function applyFilters() {
+  var cards = document.querySelectorAll('#portfolioGrid .pf-card');
+  for (var i = 0; i < cards.length; i++) {
+    var card = cards[i];
+    var catMatch = activeCategory === 'all' || card.getAttribute('data-cat') === activeCategory;
+    var price = parseInt(card.getAttribute('data-price') || '0');
+    var priceMatch = price <= maxPrice;
+    card.style.display = (catMatch && priceMatch) ? '' : 'none';
+  }
+}
+
+function showTab(name, btn) {
+  var sections = document.querySelectorAll('.section');
+  for (var i = 0; i < sections.length; i++) sections[i].classList.remove('active');
+  var tabs = document.querySelectorAll('.tab-btn');
+  for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  var nav = document.querySelector('.tab-nav');
+  if (nav) window.scrollTo(0, nav.offsetTop - 1);
+}
+
+function toggleFaq(item) {
+  var isOpen = item.classList.contains('open');
+  var all = document.querySelectorAll('.faq-item');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('open');
+  if (!isOpen) item.classList.add('open');
+}
+
+function acceptTerms() {
+  var btn = document.getElementById('acceptBtn');
+  var bar = document.getElementById('acceptBar');
+  var block = document.getElementById('accept');
+  var textEl = document.getElementById('acceptBtnText');
+
+  bar.style.width = '100%';
+  btn.classList.add('done-btn');
+  block.classList.add('done');
+  textEl.innerHTML = 'Отлично! Открываю Telegram...';
+
+  var msg = encodeURIComponent('Привет! Ознакомился с правилами, готов работать');
+  window.open('https://t.me/zroven?text=' + msg, '_blank');
+}
+
+// init slider
+var sf = document.getElementById('sliderFill');
+if (sf) sf.style.width = '100%';
+</script>
+
+</body>
+</html>
